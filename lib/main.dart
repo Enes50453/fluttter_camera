@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'dart:io';
-
+import 'package:gallery_saver/gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 
 void main() {
@@ -84,6 +84,8 @@ class _HomePageState extends State<MyHomePage> {
   onImageButtonPressed(ImageSource source) async {
     try {
       await getImage(source);
+      GallerySaver.saveImage(image!.path);
+      print(image!.path.toString());
     } catch (e) {
       print(e);
     }
